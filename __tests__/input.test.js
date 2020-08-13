@@ -1,32 +1,57 @@
 'use strict';
 
-jest.mock('minimist');
-const minimist = require('minimist');
-
-minimist.mockImplementation(() => {
-  return {
-    a: 'This is a note',
-  };
-});
-
 const Input = require('../lib/input.js');
 
-describe('Input Module', () => {
-  it('parse() creates a good object', () => {
-    let options = new Input();
-    let command = options.parse({ a: 'test' });
+describe('Parse list', () => {
+  it('should parse --list', () => {
+    const input = new Input();
+    const command = input.parse({ list: true });
+    expect(command.action).toBe('list');
+  });
+
+  it('should parse -l', () => {
+    const input = new Input();
+    const command = input.parse({ l: true });
+    expect(command.action).toBe('list');
+  });
+});
+
+describe('Parse delete', () => {
+  it('should parse --delete', () => {
+    const input = new Input();
+    const command = input.parse({ delete: 'someid' });
+    expect(command.action).toBe('delete');
+    expect(command.payload).toBe('someid');
+  });
+
+  it('should parse -d', () => {
+    const input = new Input();
+    const command = input.parse({ d: 'someid' });
+    expect(command.action).toBe('delete');
+    expect(command.payload).toBe('someid');
+  });
+});
+
+describe('parse category', () => {
+  it('should parse -a with payload and --category', () => {
+    const input = new Input();
+    const command = input.parse({
+      a: 'good payload',
+      category: 'good category',
+    });
     expect(command.action).toBe('add');
-    expect(command.payload).toBe('test');
+    expect(command.payload).toBe('good payload');
+    expect(command.category).toBe('good category');
   });
 
-  it('valid() respects a proper object', () => {
-    let options = new Input();
-    expect(options.valid()).toBeTruthy();
-  });
-
-  it('valid() rejects an invalid object', () => {
-    let options = new Input();
-    options.command = {}; // break it
-    expect(options.valid()).toBeFalsy();
+  it('should parse -a with payload and --c', () => {
+    const input = new Input();
+    const command = input.parse({
+      a: 'good payload',
+      c: 'good category',
+    });
+    expect(command.action).toBe('add');
+    expect(command.payload).toBe('good payload');
+    expect(command.category).toBe('good category');
   });
 });
