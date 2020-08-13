@@ -13,8 +13,7 @@ describe('Notes Collection', () => {
       category: 'Lots of reasons to celebrate.',
     };
     const note = await notesCollection.create();
-    console.log('NOTE____________', note);
-    compareProps(note, noteData);
+    compareProps(noteData, note);
   });
 });
 

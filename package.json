@@ -24,11 +24,11 @@
   },
   "homepage": "https://github.com/alex-whan-401-advanced-javascript/notes#readme",
   "dependencies": {
+    "@code-fellows/supergoose": "^1.0.2",
     "express": "^4.17.1",
     "is-url": "^1.2.4",
     "jest": "^26.3.0",
     "minimist": "^1.2.5",
-    "mongoose": "^5.9.28",
-    "supergoose": "^0.2.6"
+    "mongoose": "^5.9.28"
   }
 }
