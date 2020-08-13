@@ -30,25 +30,3 @@ describe('Input Module', () => {
     expect(options.valid()).toBeFalsy();
   });
 });
-
-const Notes = require('../lib/notes.js');
-
-// Jest Docs:
-// jest.spyOn(object, methodName) - tracks calls to object.methodName
-
-xdescribe('Notes Module', () => {
-  it('nothing logged to the console if no command given', () => {
-    let opts = new Input();
-    opts.command = {};
-    let notes = new Notes(opts);
-    const spy = jest.spyOn(notes, 'execute'); //spies on execute method of notes instantiation
-
-    beforeEach(() => {
-      spy.mockReset();
-    });
-
-    afterEach(() => {
-      expect(spy).not.toHaveBeenCalled();
-    });
-  });
-});
