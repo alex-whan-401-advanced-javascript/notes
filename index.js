@@ -1,7 +1,10 @@
+#!/usr/bin/env/node
 'use strict';
 
 const mongoose = require('mongoose');
 
+// Move this out to a config file as a stretch goal
+// like a .env
 mongoose.connect('mongodb://localhost:27017/notesy', {
   useNewUrlParser: true,
   useUnifiedTopology: true,

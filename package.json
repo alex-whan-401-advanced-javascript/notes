@@ -28,6 +28,7 @@
     "is-url": "^1.2.4",
     "jest": "^26.3.0",
     "minimist": "^1.2.5",
-    "mongoose": "^5.9.28"
+    "mongoose": "^5.9.28",
+    "supergoose": "^0.2.6"
   }
 }
