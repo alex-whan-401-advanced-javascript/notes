@@ -1,11 +1,11 @@
 'use strict';
 
-const Notes = require('../lib/notes.js');
-const Input = require('../lib/input.js');
+require('@code-fellows/supergoose');
 
-let opts = new Input();
+const Notes = require('../lib/notes.js');
+
 let notes = new Notes();
-jest.spyOn(notes, 'add');
+let spy = jest.spyOn(notes, 'add');
 
 describe('Notes Module', () => {
   it('nothing logged to the console if no valid options given', () => {
@@ -17,8 +17,24 @@ describe('Notes Module', () => {
   it('add() will add a note', () => {
     const action = 'add';
     const payload = 'test note';
-    return notes.execute({ action, payload }).then(() => {
-      expect(notes.add).toHaveBeenCalled();
+    const note = notes.execute({ action, payload });
+    expect(notes.add).toHaveBeenCalled();
+  });
+
+  it.skip('can display a saved note', () => {
+    const action = 'add';
+    const payload = 'test note';
+    return notes.execute({ action, payload }).then((results) => {
+      expect(results.category).toBe('general');
+      expect(results.payload).toBe('test note');
     });
+  });
+
+  it('should be able to list stored notes from the database', async () => {
+    const action = 'add';
+    const payload = 'testing list';
+    await notes.execute({ action, payload });
+    await notes.execute({ action: 'list' });
+    expect(spy).toHaveBeenCalled();
   });
 });
