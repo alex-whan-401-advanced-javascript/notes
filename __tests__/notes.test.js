@@ -12,11 +12,10 @@ describe('Notes Module', () => {
     });
   });
 
-  it.skip('add() will add a note', async () => {
+  it('add() will add a note', () => {
     const action = 'add';
     const payload = 'test note';
-    const note = await notes.execute({ action, payload });
-    expect(true).toBe(false);
-    // expect(notes.add).toHaveBeenCalled();
+    const note = notes.execute({ action, payload });
+    expect(notes.add).toHaveBeenCalled();
   });
 });
