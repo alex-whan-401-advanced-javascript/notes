@@ -13,11 +13,10 @@ mongoose.connect('mongodb://localhost:27017/notesy', {
 // requires library files
 const Input = require('./lib/input.js');
 const Notes = require('./lib/notes.js');
-const NotesCollection = require('./lib/models/notes-collection.js');
 
 // instantiates an instance of Input module and initializes in constant 'options'
 const input = new Input();
-const notes = new NotesCollection();
+const notes = new Notes();
 
 if (input.valid()) {
   notes
