@@ -4,7 +4,6 @@ require('@code-fellows/supergoose');
 
 const NotesCollection = require('../lib/models/notes-collection.js');
 
-// Signature: how many and of what kind of arguments, plus a return value
 describe('Notes Collection', () => {
   it.skip('should create - sunny day - when everything goes right', async () => {
     const notesCollection = new NotesCollection();
@@ -24,11 +23,3 @@ function compareProps(a, b) {
     expect(a[key]).toBe(b[key]);
   }
 }
-
-// This compareProps can replace all this:
-// expect(note._id).toBeDefined();
-// expect(note.text).toBe(noteData.text);
-// expect(note.category).toBe(noteData.category);
-
-// Action and payload are important for this app - but not for the NotesCollection model per se
-// When you're dealing with ASYNC stuff, always ask yourself: Is this a promise? Should I just add async? Async is easy to add - even to anonymous arrow functions
