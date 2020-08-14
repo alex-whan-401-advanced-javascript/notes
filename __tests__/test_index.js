@@ -1,5 +1,6 @@
 'use strict';
 
+const Input = require('../lib/input.js');
 jest.mock('minimist');
 const minimist = require('minimist');
 
@@ -8,8 +9,6 @@ minimist.mockImplementation(() => {
     a: 'This is a note',
   };
 });
-
-const Input = require('../lib/input.js');
 
 describe('Input Module', () => {
   it('parse() creates a good object', () => {

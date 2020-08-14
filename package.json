@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "notes.js",
+  "bin": {
+    "notes": "notes.js"
+  },
   "directories": {
     "lib": "lib"
   },
