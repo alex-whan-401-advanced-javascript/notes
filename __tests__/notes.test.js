@@ -1,5 +1,7 @@
 'use strict';
 
+require('@code-fellows/supergoose');
+
 const Notes = require('../lib/notes.js');
 
 let notes = new Notes();
@@ -17,5 +19,14 @@ describe('Notes Module', () => {
     const payload = 'test note';
     const note = notes.execute({ action, payload });
     expect(notes.add).toHaveBeenCalled();
+  });
+
+  it('can display a saved note', () => {
+    const action = 'add';
+    const payload = 'test note';
+    return notes.execute({ action, payload }).then((results) => {
+      expect(results.category).toBe('general');
+      expect(results.payload).toBe('test note');
+    });
   });
 });
