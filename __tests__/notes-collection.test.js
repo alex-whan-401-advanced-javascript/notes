@@ -5,7 +5,7 @@ require('@code-fellows/supergoose');
 const NotesCollection = require('../lib/models/notes-collection.js');
 
 // Signature: how many and of what kind of arguments, plus a return value
-describe('Notes Collection', () => {
+describe.skip('Notes Collection', () => {
   it('should create - sunny day - when everything goes right', async () => {
     const notesCollection = new NotesCollection();
     const noteData = {

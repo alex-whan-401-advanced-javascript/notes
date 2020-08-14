@@ -20,7 +20,7 @@ const notes = new Notes();
 
 if (input.valid()) {
   notes
-    .execute(input.command)
+    .execute(input.command) // check this
     .then(mongoose.disconnect)
     .catch((err) => console.error(err));
 } else {
