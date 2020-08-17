@@ -14,6 +14,21 @@ describe('Notes Collection', () => {
     const note = await notesCollection.create();
     compareProps(noteData, note);
   });
+
+  it('should create with no "category" given', async () => {
+    const notesCollection = new NotesCollection();
+    const noteData = { text: 'Check out this generic note.' };
+    const note = await notesCollection.create(noteData);
+  });
+
+  it('should delete given a good ID', async () => {
+    const notesCollection = new NotesCollection();
+    const noteData = { text: 'Check out this generic note.' };
+    const note = await notesCollection.create(noteData);
+    await notesCollection.delete(note._id);
+    const deletedNote = await notesCollection.get({ _id: 'note._id' });
+    expect(deletedNote).toBeFalsy();
+  });
 });
 
 // Compare Props helper function
