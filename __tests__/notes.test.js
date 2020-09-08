@@ -29,13 +29,13 @@ describe('Notes Module', () => {
     expect(notes.add).toHaveBeenCalled();
   });
 
-  it.skip('can display a saved note', () => {
-    const action = 'add';
-    const payload = 'test note';
-    return notes.execute({ action, payload }).then(results => {
-      expect(results.category).toBe('general');
-      expect(results.payload).toBe('test note');
+  it('can display a saved note', async () => {
+    const addedNote = await notes.execute({
+      action: 'add',
+      payload: 'Check this cool test!',
     });
+    expect(addedNote.category).toBe('general');
+    expect(addedNote.text).toBe('Check this cool test!');
   });
 
   it('should be able to list stored notes from the database', async () => {
