@@ -22,7 +22,7 @@ if (input.valid()) {
   notes
     .execute(input.command) // check this
     .then(mongoose.disconnect)
-    .catch((err) => console.error(err));
+    .catch(err => console.error(err));
 } else {
   handleError();
 }
